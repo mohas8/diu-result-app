@@ -1,0 +1,36 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+{% block title %}Home - Student Result App{% endblock %}
+{% block content %}
+<div class="container">
+    <!-- Include the logo with space above -->
+    <div class="text-center my-5">
+        <img src="{{ url_for('static', filename='images/diulogoside.png') }}" alt="Logo" style="max-width: 400px;">
+    </div>
+    <h1 class="text-center my-4">Check Student Results</h1>
+    <form method="post">
+        <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="number" class="form-control" name="year" required placeholder="e.g., 2024">
+        </div>
+        <div class="form-group">
+            <label for="semester">Semester:</label>
+            <select class="form-control" name="semester" required>
+                <option value="">Select Semester</option>
+                <option value="spring">Spring</option>
+                <option value="summer">Summer</option>
+                <option value="fall">Fall</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="student_id">Student ID:</label>
+            <input type="text" class="form-control" name="student_id" required placeholder="e.g., 221-15-0000">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+    <!-- Theme Switcher Icon -->
+    <div class="text-center mt-3">
+        <img id="theme-toggle-icon" src="{{ url_for('static', filename='images/theme-icon.png') }}" alt="Toggle Theme" style="width: 30px; cursor: pointer;">
+    </div>
+</div>
+{% endblock %}

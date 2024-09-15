@@ -1,0 +1,93 @@
+<!-- templates/results.html -->
+{% extends 'base.html' %}
+{% block title %}Results - Student Result App{% endblock %}
+{% block content %}
+<div class="container" id="result">
+    <!-- Include the logo with space above -->
+    <div class="text-center my-5">
+        <img src="{{ url_for('static', filename='images/diulogoside.png') }}" alt="Logo" style="max-width: 400px;">
+    </div>
+    <h1 class="text-center my-4">Student Results</h1>
+    {% if student_info %}
+    <div class="mb-4">
+        <p><strong>Student ID:</strong> {{ student_info.studentId }}</p>
+        <p><strong>Name:</strong> {{ student_info.studentName }}</p>
+        <p><strong>Program:</strong> {{ student_info.programName }}</p>
+        <!-- Removed Department Name -->
+        <p><strong>Faculty:</strong> {{ student_info.facultyName }}</p>
+    </div>
+    {% else %}
+    <p>No student information found.</p>
+    {% endif %}
+
+    <p><strong>Semester:</strong> {{ semester }} {{ year }}</p>
+
+    {% if data %}
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>Course ID</th>
+                <th>Course Title</th>
+                <th>Credit</th>
+                <th>Grade</th>
+                <th>GPA</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in data %}
+            <tr>
+                <td>{{ course.customCourseId }}</td>
+                <td>{{ course.courseTitle }}</td>
+                <td>
+                    {% if course.totalCredit % 1 == 0 %}
+                        {{ course.totalCredit | int }}
+                    {% else %}
+                        {{ course.totalCredit }}
+                    {% endif %}
+                </td>
+                <td>{{ course.gradeLetter }}</td>
+                <td>{{ course.pointEquivalent }}</td>
+            </tr>
+            {% endfor %}
+            <!-- SGPA row -->
+            <tr>
+                <td colspan="2"><strong>Total Credits:</strong></td>
+                <td>
+                    {% if total_credits % 1 == 0 %}
+                        {{ total_credits | int }}
+                    {% else %}
+                        {{ total_credits }}
+                    {% endif %}
+                </td>
+                <td><strong>SGPA:</strong></td>
+                <td>{{ sgpa }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% else %}
+    <p>No results found.</p>
+    {% endif %}
+
+</div>
+<div class="text-center my-4">
+    <button onclick="downloadImage()" class="btn btn-success">Download JPEG</button>
+    <a href="{{ url_for('index') }}" class="btn btn-primary">View Another Result</a>
+    <!-- Theme Switcher Icon -->
+    <img id="theme-toggle-icon" src="{{ url_for('static', filename='images/theme-icon.png') }}" alt="Toggle Theme" style="width: 30px; cursor: pointer;">
+</div>
+
+<!-- Include html2canvas from CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+function downloadImage() {
+    const resultDiv = document.getElementById('result');
+    html2canvas(resultDiv, {backgroundColor: null, useCORS: true}).then(function(canvas) {
+        const link = document.createElement('a');
+        link.download = 'result.jpg';
+        link.href = canvas.toDataURL('image/jpeg', 0.95);
+        link.click();
+    });
+}
+</script>
+{% endblock %}

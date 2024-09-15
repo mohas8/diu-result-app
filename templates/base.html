@@ -1,0 +1,30 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Student Result App{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    {% block content %}{% endblock %}
+    <!-- Footer with developer info -->
+    <footer class="text-center mt-5">
+        <p>Developed by Mobashir, collaborating with OpenAI o1</p>
+        <p>Inspired by a similar project: <a href="https://cyr0x.vercel.app/" target="_blank">cyr0x.vercel.app</a></p>
+        <p>
+            <a href="https://www.linkedin.com/in/mohas8/" target="_blank">LinkedIn</a> |
+            <a href="https://github.com/mohas8" target="_blank">GitHub</a> |
+            <a href="https://fb.com/mohas8" target="_blank">Facebook</a>
+        </p>
+        <p>App Version 1.0</p>
+    </footer>
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

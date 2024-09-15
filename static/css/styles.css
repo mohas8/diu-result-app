@@ -1,0 +1,95 @@
+/* static/css/styles.css */
+
+/* Base styles */
+body {
+    background-color: white;
+    color: black;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.table {
+    color: #000000;
+}
+
+body.dark-mode .table {
+    color: #ffffff;
+}
+
+body.dark-mode .table thead {
+    background-color: #333333;
+}
+
+body.dark-mode .table tbody tr {
+    background-color: #1e1e1e;
+}
+
+.table thead {
+    background-color: #f8f9fa;
+}
+
+.table tbody tr {
+    background-color: #ffffff;
+}
+
+.table tbody tr td {
+    color: #000000;
+}
+
+body.dark-mode .table tbody tr td {
+    color: #ffffff;
+}
+
+body.dark-mode .btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+body.dark-mode .btn-success {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+body.dark-mode .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* Ensure text is visible in light mode */
+.table tbody tr td {
+    color: #000000;
+}
+
+body.dark-mode .table tbody tr td {
+    color: #ffffff;
+}
+
+/* Student Info Text */
+.mb-4 p {
+    color: inherit;
+}
+
+/* Footer Styles */
+footer {
+    color: inherit;
+}
+
+body.dark-mode footer a {
+    color: #ffffff;
+}
+
+footer a {
+    color: #0000ee;
+}
+
+/* Ensure text visibility in downloaded image */
+#result {
+    color: inherit;
+}
+
+#result p, #result h1, #result table, #result footer {
+    color: inherit;
+}
